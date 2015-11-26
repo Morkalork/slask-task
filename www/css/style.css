@@ -1,1 +1,17 @@
-/* Empty. Add your own CSS if you like */
+.finished-task {
+	font-style: italic;
+	opacity: 0.6;
+}
+
+.unfinished-task {
+	background-color: #EDEDED;
+	font-weight: bold;
+}
+
+.unfinished-task button.finished {
+	opacity: 1;
+}
+
+.unfinished-task button.unfinished{
+	display: none;
+}

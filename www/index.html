@@ -39,12 +39,16 @@
       </ion-header-bar>
       <ion-content>
         <ion-list>
-          <ion-item ng-repeat="item in items track by $index" align-title="left">
+          <ion-item ng-repeat="item in items | orderBy: 'status'" class="item-button-right" ng-class="getItemStatusClass(item.status)">
             <h3>{{item.title}}</h3>
-            <button class="button icon-left ion-plus-circled button-balanced" ng-click="setTodoStatus(item.id, item.status)">Done</button>
-            <button class="button icon-left ion-close-circled button-dark" ng-click="removeTodoItem(item.id)">Remove</button>
+            <button 
+              class="button button-positive" 
+              ng-click="setTodoStatus(item.id, item.status)">
+                <i class="icon" ng-class="getButtonStatusClass(item.status)"></i>
+              </button>
           </ion-item>
         </ion-list>
+        
       </ion-content>
     </ion-pane>
   </body>
