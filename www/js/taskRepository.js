@@ -22,31 +22,34 @@ angular.module('starter.repositories', ['ngCordova'])
 						}, reject);
 				});
 			},
-			
-			removeTask: function(taskId){
-				return new Promise(function(resolve, reject){
+
+			removeTask: function (taskId) {
+				return new Promise(function (resolve, reject) {
 					var query = "DELETE FROM TaskTbl WHERE id = ?";
-					
+
 					$cordovaSQLite.execute(db, query, [taskId])
 						.then(resolve, reject);
 				});
 			},
-			
-			addTask: function(item){
-				return new Promise(function(resolve, reject){
+
+			addTask: function (item) {
+				return new Promise(function (resolve, reject) {
 					var query = "INSERT INTO TaskTbl (title, status) VALUES (?, ?)";
-					
+
 					$cordovaSQLite
 						.execute(db, query, item)
 						.then(resolve, reject);
 				});
 			},
-			
-			updateTaskStatus: function(id, newStatus){
-				var query = "UPDATE TaskTbl SET status = ? WHERE id = ?";
-				
-				$cordovaSQLite
-					.execute(db, query, [newStatus, id]);
+
+			updateTaskStatus: function (id, newStatus, resolve, reject) {
+				return new Promise(function (resolve, reject) {
+					var query = "UPDATE TaskTbl SET status = ? WHERE id = ?";
+
+					$cordovaSQLite
+						.execute(db, query, [newStatus, id])
+						.then(resolve, reject);
+				});
 			}
 		};
 	}]);
