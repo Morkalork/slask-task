@@ -13,7 +13,7 @@ angular.module('starter', ['ionic', 'ngCordova', 'starter.controllers'])
       initDatabase($cordovaSQLite);
 
       $cordovaSQLite
-        .execute(db, "CREATE TABLE TaskTbl (id integer primary key, title text, status int)")
+        .execute(db, "CREATE TABLE IF NOT EXISTS TaskTbl (id integer primary key, title text, status int)")
         .then(function(result){ console.log("Completed creating table: %o", result);})
         .then(function(error){ console.error("Failed to create database: %o", error);});
       
